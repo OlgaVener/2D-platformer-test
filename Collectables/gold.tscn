@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh1r35kpv7ar"]
+
+[ext_resource type="Texture2D" uid="uid://cnc12l20tspg5" path="res://Red/red_crystal_0000.png" id="1_4sivf"]
+[ext_resource type="Script" path="res://Collectables/gold.gd" id="1_m121s"]
+[ext_resource type="Texture2D" uid="uid://dnyl5wpy06m5s" path="res://Red/red_crystal_0001.png" id="2_y3f8f"]
+[ext_resource type="Texture2D" uid="uid://c4ktxpx21yjgs" path="res://Red/red_crystal_0002.png" id="3_wo0pk"]
+[ext_resource type="Texture2D" uid="uid://wniglvno8yqo" path="res://Red/red_crystal_0003.png" id="4_iibid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alsrn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlxlp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4sivf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y3f8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wo0pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iibid")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="GOLD" type="Area2D"]
+script = ExtResource("1_m121s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_alsrn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.350586, 0.350586)
+sprite_frames = SubResource("SpriteFrames_vlxlp")
+animation = &"idle"
+frame_progress = 0.514942
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
